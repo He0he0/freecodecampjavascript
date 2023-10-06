@@ -1,0 +1,28 @@
+function rot13(str) {
+  let key = ["A","B","C","D","E","F","G",'H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+  
+ 
+  let filter = /[\w\s]/gi;
+  let secFilter = /\W/gi;
+let newStr = str.match(filter);
+let puncStr = str.match(secFilter);
+
+let shiftNum =13;
+let res = [];
+
+
+
+console.log(key.indexOf(newStr[0]));
+for(let i = 0; i<newStr.length;i++){
+    if (str[i].match(/\s/)){
+        res.push(str[i]);
+    }
+  else if (key.indexOf(newStr[i]) >= shiftNum){
+  newStr[i] = key[key.indexOf(newStr[i])-shiftNum];
+  res.push(newStr[i]);
+
+  }
+  else if(key.indexOf(newStr[i]) < shiftNum){
+    newStr[i] = key[key.indexOf(newStr[i]) - shiftNum + key.length];
+    res.push(newStr[i]);
+  } 
